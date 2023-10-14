@@ -24,4 +24,17 @@ public class UserCreateMapper implements Mapper<UserCreateDto, User>{
                         .orElseThrow(IllegalArgumentException::new))
                 .build();
     }
+
+    @Override
+    public User map(UserCreateDto fromObject, User toObject) {
+        copy(fromObject, toObject);
+        return toObject;
+    }
+
+    private void copy(UserCreateDto object, User user) {
+        user.setUsername(object.username());
+        user.setId(object.companyId());
+        user.setRole(object.role());
+    }
 }
+

@@ -9,9 +9,7 @@ import com.example.hibernatestarter.model.User;
 public interface Mapper <F, T>{
     T mapFrom(F object);
 
-    default void copy(User user, UserCreateDto userDto){
-        user.setUsername(userDto.username());
-        user.setRole(userDto.role());
-        user.getCompany().setId(user.getId());
+    default T map(F fromObject, T toObject){
+        return toObject;
     }
 }
